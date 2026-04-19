@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2 - Condicionais com os Operadores</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 2 - Condicionais com os Operadores</h2>
+        <div class="form-columns">
+
+            <div class="form-group">
+                <label for="nota1">Nota 1</label>
+                <input type="text" id="nota1" placeholder="Digite a nota 1 aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="nota2">Nota 2</label>
+                <input type="text" id="nota2" placeholder="Digite a nota 2 aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="nota3">Nota 3</label>
+                <input type="text" id="nota3" placeholder="Digite a nota 3 aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="nota4">Nota 4</label>
+                <input type="text" id="nota4" placeholder="Digite a nota 4 aqui...">
+            </div>
+
+        </div>
+
+
+        <p id="msg"></p>
+        <button type="submit" id="btn_calcular" class="btn success">Calcular média</button>
+
+
+    </main>
+
+    <Script>
+        const btnCalcular = document.getElementById("btn_calcular")
+        const msgMostrar = document.getElementById("msg")
+
+
+        btnCalcular.addEventListener("click", () => {
+            let nota1 = document.getElementById("nota1").value.trim()
+            let nota2 = document.getElementById("nota2").value.trim()
+            let nota3 = document.getElementById("nota3").value.trim()
+            let nota4 = document.getElementById("nota4").value.trim()
+
+            if (nota1 == "" || nota2 == "" || nota3 == "" || nota4 == "") {
+                alert("Preencher todos os campos")
+            }
+            else if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+                alert("Preencher os campos somente com números")
+            }
+            else {
+                nota1 = Number(nota1)
+                nota2 = Number(nota2)
+                nota3 = Number(nota3)
+                nota4 = Number(nota4)
+
+                if (nota1 < 0 || nota1 > 100) {
+                    alert(" A nota 1 é inválida. Digite uma nota de 0 até 100")
+                }
+                else if (nota2 < 0 || nota2 > 100) {
+                    alert(" A nota 2 é inválida. Digite uma nota de 0 até 100")
+                }
+                else if (nota3 < 0 || nota3 > 100) {
+                    alert(" A nota 3 é inválida. Digite uma nota de 0 até 100")
+                }
+                else if (nota4 < 0 || nota4 > 100) {
+                    alert(" A nota 4 é inválida. Digite uma nota de 0 até 100")
+                }
+                else {
+                    const media = (nota1 + nota2 + nota3 + nota4) / 4
+
+                    if (media >= 0 && media < 40) {
+                        msgMostrar.innerHTML = `${media} - Reprovado!`
+                        msgMostrar.style.color = "red"
+
+                    }
+                    else if (media >= 40 && media < 60) {
+                        msgMostrar.innerHTML = `${media} - Exame!`
+                        msgMostrar.style.color = "orange"
+
+                    }
+                    else if (media >= 60) {
+                        msgMostrar.innerHTML = `${media} - Aprovado!`
+                        msgMostrar.style.color = "green"
+
+                    }
+                }
+            }
+        })
+
+    </Script>
+
+</body>
+
+</html>

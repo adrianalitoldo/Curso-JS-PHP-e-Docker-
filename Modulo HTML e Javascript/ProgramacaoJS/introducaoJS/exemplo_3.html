@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3 - Eventos em Javascript</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="../index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 3 - Eventos em Javascript</h2>
+        <div class="form-column-item">
+            <div class="form-group">
+                <label for="example3">Escolha uma opção:</label>
+                <select id="example3" onchange="mudarValorOpcao(this.value)">
+                    <option value="A">Option 1</option>
+                    <option value="B">Option 2</option>
+                </select>
+            </div>
+            <button type="submit" onclick="mostrarMensagem()" class="btn success">Mostrar</button>
+        </div>    
+        </main>
+
+    <Script>
+
+        function mudarValorOpcao(valoSelecionado) {
+            alert("Valor Selecionado: " + valoSelecionado)
+
+        }
+
+        function mostrarMensagem() {
+            alert("Olá, você clicou no botão.")
+        }
+    </Script>
+
+</body>
+
+</html>

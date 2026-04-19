@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2 - Laços de Repetição</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 2 - While</h2>
+
+        <button type="submit" id="btn_jogo" class="btn success">Iniciar o jogo</button>
+
+
+    </main>
+
+    <Script>
+
+        const numeroSecreto = 7
+        const btnJogoIniciar = document.getElementById("btn_jogo")
+        let qtdTentativas = 0;
+
+
+
+        btnJogoIniciar.addEventListener("click", () => {
+            let palpite = 0
+
+            while(palpite != numeroSecreto){
+                qtdTentativas++
+                palpite = prompt("Digite um número: ")
+                if (palpite == numeroSecreto) {
+                    alert(`Acertou o número, suas tentativas foram: ${qtdTentativas} vezes`)
+                }
+                else {
+                    
+                    alert("Errou!")
+                }
+
+
+            }
+
+        })
+
+    </Script>
+
+</body>
+
+</html>

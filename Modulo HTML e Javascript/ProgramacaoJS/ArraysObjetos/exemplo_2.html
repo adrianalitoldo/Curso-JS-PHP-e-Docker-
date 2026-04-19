@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2 - Operadores Lógiocos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 2 - Operadores Lógiocos</h2>
+        <div class="form-columns">
+
+            <div class="form-group">
+                <label for="numero_inicial">Número inicial</label>
+                <input type="text" id="numero_inicial" placeholder="Digite o número inicial aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="numero_meio">Número do meio</label>
+                <input type="text" id="numero_meio" placeholder="Digite o número do meio aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="numero_final">Número final</label>
+                <input type="text" id="numero_final" placeholder="Digite o número final aqui...">
+            </div>
+
+        </div>
+
+
+        <p id="msg"></p>
+        <button type="submit" id="btn_verificar_intervalo" class="btn success">Verificar intervalo</button>
+
+
+    </main>
+
+    <Script>
+        const btnVerificarIntervalo = document.getElementById("btn_verificar_intervalo")
+        const msgMostrar = document.getElementById("msg")
+
+
+        btnVerificarIntervalo.addEventListener("click", () => {
+            const inicial = document.getElementById("numero_inicial").value.trim()
+            const meio = document.getElementById("numero_meio").value.trim()
+            const final = document.getElementById("numero_final").value.trim()
+
+            if (inicial == "" || meio == "" || final == "") {
+                alert("Preencher todos os campos")
+            }
+            else if( isNaN (inicial) || isNaN (meio) || isNaN (final)){
+                alert("Preencher os campos somente com números")
+            }
+            else{
+                if(Number(meio) >= Number(inicial) && meio <= Number(final)){
+                    msgMostrar.innerHTML = `O número ${meio} está entre o valor ${inicial} e ${final}`
+                }
+                else{
+                    msgMostrar.innerHTML = `O número ${meio} não está entre o valor ${inicial} e ${final}`
+                }
+
+            }
+        })
+
+    </Script>
+
+</body>
+
+</html>

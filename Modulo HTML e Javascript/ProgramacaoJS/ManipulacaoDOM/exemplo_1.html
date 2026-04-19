@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1 - Capturar informação digitada</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 1 - Capturar informação digitada</h2>
+
+        <div class="form-group">
+            <label for="nome_completo">Nome completo</label>
+            <input type="text" id="nome_completo" placeholder="Digite seu nome aqui...">
+        </div>
+
+        <div class="form-group">
+            <label for="email_usuario">E-mail</label>
+            <input type="text" id="email_usuario" placeholder="Digite seu nome aqui...">
+        </div>
+
+        <button type="submit" class="btn success" onclick="mostrarCampoDigitado()">Mostrar</button>
+        <button type="submit" id="btn_mostrar" class="btn success">Mostrar com lista de evento</button>
+
+
+
+    </main>
+
+    <Script>
+
+        const btnMostrar = document.getElementById("btn_mostrar")
+
+        btnMostrar.addEventListener("click", mostrarCampoDigitado)
+
+
+        // btnMostrar.addEventListener("click", ()=>{
+        // alert("clicou no botão do evento")  
+        // })
+
+
+        //btnMostrar.addEventListener("mouseover", ()=> {
+        //   alert("Passou o mouse no botão")
+        //})
+
+
+        function mostrarCampoDigitado() {
+            const nomeCompleto = document.querySelector("#nome_completo").value
+            const email = document.querySelector("#email_usuario").value
+            alert("Nome completo: " + nomeCompleto + "\n" + "E-mail: " + email)
+        }
+
+
+    </Script>
+
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1 - Operadores Relacionais</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 1 - Operadores Relacionais</h2>
+
+        <div class="form-group">
+            <label for="nome_completo">Nome completo</label>
+            <input type="text" id="nome_completo" placeholder="Digite seu nome aqui...">
+        </div>
+
+        <div class="form-group">
+            <label for="idade_usuario">Idade</label>
+            <input type="text" id="idade_usuario" placeholder="Digite sua idade aqui...">
+        </div>
+        <p id="msg_permissao"></p>
+        <button type="submit" id="btn_verificar"  class="btn success">Verificar idade</button>
+
+        <hr>
+
+        <div class="form-columns">
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="nome_cadastro">Nome</label>
+                    <input type="text" id="nome_cadastro" placeholder="Digite seu nome de cadastro">
+                </div>
+            </div>
+
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="login_acesso">Login de acesso</label>
+                    <input type="text" id="login_acesso" placeholder="Digite seu login">
+                </div>
+            </div>
+           
+
+
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="senha">Crie uma senha</label>
+                    <input type="text" id="senha" placeholder="Digite a senha com no mínimo 6 caracteres">
+                </div>
+            </div>
+
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="repita_senha">Repita a senha</label>
+                    <input type="text" id="repita_senha" placeholder="Repita a senha">
+                </div>
+            </div>
+
+        </div>
+
+        <p id="msg_cadastro"></p>
+        <button type="submit" id="btn_verificar_cadastro" class="btn success">Verificar cadastro</button>
+
+
+    </main>
+
+    <Script>
+
+        const idadeMinimaPermitida = 18
+        const qtdeSenhaMinima = 6
+        const qtdeSenhaMaxima = 12
+
+        const btnVerificar = document.getElementById("btn_verificar")
+        const btnVerificarCadastro = document.getElementById("btn_verificar_cadastro")
+
+        const msg = document.getElementById("msg_permissao")
+        const msgCadastro = document.getElementById("msg_cadastro")
+
+
+
+        btnVerificarCadastro.addEventListener("click", () => {
+            const campoNome = document.getElementById("nome_cadastro")
+            const campoLogin = document.getElementById("login_acesso")
+            const campoSenha = document.getElementById("senha")
+            const campoRepetirSenha = document.getElementById("repita_senha")
+           
+
+
+            const nome = campoNome.value.trim()
+            const login = campoLogin.value.trim()
+            const senha = campoSenha.value.trim()
+            const repitaSenha = campoRepetirSenha.value.trim()
+
+             if (nome == "") {
+                alert("Preencher o campo Nome")
+                campoNome.value = ""
+                campoNome.focus()
+            }
+            else if (login == "") {
+                alert("Preencher o campo Login")
+                campoLogin.value = ""
+                campoLogin.focus()
+            }
+            else if (senha.length < qtdeSenhaMinima) {
+                alert(`A senha deverá ter no mínimo ${qtdeSenhaMinima} caracteres`)
+
+            }
+            else if (senha.length > qtdeSenhaMaxima) {
+                alert(`A senha deverá ter no máximo ${qtdeSenhaMaxima} caracteres`)
+            }
+
+            else if (repitaSenha != senha) {
+                alert("O campo Repetir Senha deve ser igual ao campo Senha")
+            }
+            else{
+                msgCadastro.innerHTML= "As informações de cadastro estão corretos"
+
+            }
+
+        })
+            
+
+        btnVerificar.addEventListener("click", () => {
+            const campoNome = document.getElementById("nome_completo")
+            const campoIdade = document.getElementById("idade_usuario")
+            
+            const nome = campoNome.value.trim()
+            const idade = campoIdade.value.trim()
+
+            if (nome == "") {
+                alert("Preencher o campo Nome")
+                campoNome.value = ""
+                campoNome.focus()
+            }
+            else if (idade == "") {
+                alert("Preencher o campo Idade")
+                campoIdade.value = ""
+                campoIdade.focus()
+            }
+            else if (isNaN(idade)) {
+                alert("Preencher a Idade somente com números")
+                campoIdade.value = ""
+                campoIdade.focus()
+            }
+            else if (idade < idadeMinimaPermitida) {
+                alert(`${nome}, Você não poderá jogar esse jogo, pois você tem apenas ${idade}anos`)
+                msg.innerHTML = ""
+            }
+
+            else {
+                msg.innerHTML = `${nome} você poderá jogar o jogo`
+            }
+
+
+
+        })
+
+
+
+    </Script>
+
+</body>
+
+</html>

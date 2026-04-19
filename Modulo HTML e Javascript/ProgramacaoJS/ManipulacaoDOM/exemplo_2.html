@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2 - Calcular valores</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 2 - Calcular valores</h2>
+        <div class="form-columns">
+
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="example1">Número 1</label>
+                    <input type="text" id="numero1" placeholder="Digite o número 1 aqui...">
+                </div>
+            </div>
+
+            <div class="form-column-item">
+                <div class="form-group">
+                    <label for="example1">Número 2</label>
+                    <input type="text" id="numero2" placeholder="Digite o número 2 aqui...">
+                </div>
+
+            </div>
+
+                <button type="submit" id="btn_multiplicar" class="btn success">Multiplicar</button>
+                <button type="submit" id="btn_dividir" class="btn success">Dividir</button>
+                <button type="submit" id="btn_subtrair" class="btn success">Subtrair</button>
+                <button type="submit" id="btn_somar" class="btn success">Somar</button>
+                <p id="msg"></p>
+            
+        </div>
+
+    </main>
+
+    <Script>
+        const msgMostrar = document.getElementById("msg")
+        const btnMultiplicar = document.getElementById("btn_multiplicar")
+        const btnDividir = document.getElementById("btn_dividir")
+        const btnSubtrair = document.getElementById("btn_subtrair")
+        const btnSomar = document.getElementById("btn_somar")
+
+        let numero1
+        let numero2
+        let resultado
+
+
+       btnSomar.addEventListener("click", () => {
+            numero1 = document.getElementById("numero1").value
+            numero2 = document.getElementById("numero2").value
+
+            //coloca-se Number para indentificar a soma e não uma concatenação
+            resultado = Number(numero1) + Number(numero2)
+            msgMostrar.innerHTML = `Soma: ${resultado}`
+
+            //interpolação de string, outra forma de concatenar o resultado 
+            alert(`Somar: ${resultado}` )
+
+        })
+    
+
+        btnSubtrair.addEventListener("click", () => {
+            numero1 = document.getElementById("numero1").value
+            numero2 = document.getElementById("numero2").value
+
+            resultado = numero1 - numero2
+            msgMostrar.innerHTML = `Subtração: ${resultado}`
+
+            //interpolação de string, outra forma de concatenar o resultado 
+            alert(`Subtração: ${resultado}` )
+
+        })
+
+        btnDividir.addEventListener("click", () => {
+            numero1 = document.getElementById("numero1").value
+            numero2 = document.getElementById("numero2").value
+
+            resultado = numero1 / numero2
+            msgMostrar.innerHTML = `Divisão: ${resultado}`
+
+            alert("Divisão: " + resultado)
+
+        })
+
+        btnMultiplicar.addEventListener("click", () => {
+            const numero1 = document.getElementById("numero1").value
+            const numero2 = document.getElementById("numero2").value
+
+            const resultado = numero1 * numero2
+            msgMostrar.innerHTML = `Multiplicação: ${resultado}`
+
+            alert("Multiplicação: " + resultado)
+
+        })
+
+    </Script>
+
+</body>
+
+</html>

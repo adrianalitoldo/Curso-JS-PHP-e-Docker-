@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1 - For</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 1 - For</h2>
+
+        <div class="form-group">
+            <label for="frase">Digite uma frase</label>
+            <input type="text" id="frase" placeholder="Digite sua frase...">
+        </div>
+
+        <div class="form-group">
+            <label for="repeticao">Quantidade de repetição</label>
+            <input type="text" id="repeticao" placeholder="Digite a quantidade de repetições...">
+        </div>
+        <p id="msg_for"></p>
+        <button type="submit" id="btn_repetir" class="btn success">Repetir</button>
+        <hr>
+
+    </main>
+
+    <Script>
+
+
+        const btnRepetir = document.getElementById("btn_repetir")
+        const msg = document.getElementById("msg_for")
+
+        btnRepetir.addEventListener("click", () => {
+            const frase = document.getElementById("frase").value.trim()
+            const repeticao = parseInt(document.getElementById("repeticao").value)
+
+            let resultadoFinal = ""
+
+            for (let i = 0; i < repeticao; i++) {
+                resultadoFinal = resultadoFinal + `${frase}<hr>`
+            }
+
+            msg.innerHTML = resultadoFinal
+        })
+
+
+
+
+    </Script>
+
+</body>
+
+</html>

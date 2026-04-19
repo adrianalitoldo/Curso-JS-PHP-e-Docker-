@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1 - Validar formulário</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 1 - Validar Campos</h2>
+
+        <div class="form-group">
+            <label for="nome_completo">Nome completo</label>
+            <input type="text" id="nome_completo" placeholder="Digite seu nome aqui...">
+        </div>
+
+        <div class="form-group">
+            <label for="email_usuario">E-mail</label>
+            <input type="text" id="email_usuario" placeholder="Digite seu e-mail aqui...">
+        </div>
+        <div class="form-group">
+            <label for="idade_usuario">Idade</label>
+            <input type="text" id="idade_usuario" placeholder="Digite sua idade aqui...">
+        </div>
+
+        <button type="submit" class="btn success" id="btn_validar">Validar campos</button>
+
+
+
+    </main>
+
+    <Script>
+
+        const btnValidar = document.getElementById("btn_validar")
+
+        btnValidar.addEventListener("click", () => {
+
+            const campoNome = document.getElementById("nome_completo")
+            const campoEmail = document.getElementById("email_usuario")
+            const campoIdade = document.getElementById("idade_usuario")
+
+
+            const nome = campoNome.value.trim()
+            const email = campoEmail.value.trim()
+            const idade = campoIdade.value.trim()
+            
+
+            if (nome == "") {
+                alert("Preencher o campo nome")
+                campoNome.value = "";
+                campoNome.focus()
+            }
+
+           else if  (email == "") {
+                alert("Preencher o campo e-mail")
+                campoEmail.value = "";
+                campoEmail.focus()
+            }
+            else if(idade == ""){
+                alert("Preencher o campo idade")
+                campoIdade.value = "";
+                campoIdade.focus()
+
+            }
+           
+            else if (isNaN(idade)){
+                alert("Preencher a idade somente com números")
+                campoIdade.value = "";
+                campoIdade.focus()
+            }
+            else{
+                alert("Campos validados corretamente")
+                
+            }
+
+        })
+
+
+
+
+    </Script>
+
+</body>
+
+</html>
