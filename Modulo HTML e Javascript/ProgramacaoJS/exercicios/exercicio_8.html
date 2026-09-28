@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Velocidade</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Validação de Velocidade</h1>
+
+    <div class="formulario">
+
+        <h2>Verificar Velocidade</h2>
+
+        <label for="velocidade">Velocidade do veículo (km/h):</label>
+        <input type="text" id="velocidade">
+
+        <button type="button" id="checar">
+            Checar Velocidade
+        </button>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("checar");
+
+        botao.addEventListener("click", function() {
+
+            let velocidade = Number(document.getElementById("velocidade").value);
+
+            if (velocidade > 110) {
+                alert("Acima do limite");
+            }
+
+            if (velocidade < 40) {
+                alert("Abaixo do mínimo");
+            }
+
+            if (velocidade != 60) {
+                alert("Diferente da velocidade de referência (60 km/h)");
+            } else {
+                alert("Velocidade dentro do esperado");
+            }
+
+        });
+    </script>
+
+</body>
+</html>

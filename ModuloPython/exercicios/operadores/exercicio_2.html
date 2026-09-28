@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+</head>
+
+<body>
+
+    <h1>Conversor de Temperatura</h1>
+
+    <label>Temperatura:</label>
+    <input type="number" id="temperatura" step="0.01">
+
+    <br><br>
+
+    <label>Converter de:</label>
+    <select id="origem">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+    </select>
+
+    <br><br>
+
+    <label>Converter para:</label>
+    <select id="destino">
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="celsius">Celsius</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="converterTemperatura()">Converter</button>
+
+    <script>
+        async function converterTemperatura() {
+
+            const temperatura = document.getElementById("temperatura").value;
+            const origem = document.getElementById("origem").value;
+            const destino = document.getElementById("destino").value;
+
+            const resposta = await fetch(
+                "http://localhost:5000/converter_temperatura",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        temperatura: temperatura,
+                        origem: origem,
+                        destino: destino
+                    })
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+                alert("Resultado: " + dados.temperatura_convertida);
+            } else {
+                alert("Erro: " + dados.mensagem);
+            }
+        }
+    </script>
+
+</body>
+</html>

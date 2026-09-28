@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Pedido</title>
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <h1>Solicitação de Pedido Online</h1>
+
+    <div class="formulario">
+
+        <h2>Dados do Pedido</h2>
+
+        <label for="produto">Nome do produto:</label>
+        <input type="text" id="produto">
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="text" id="quantidade">
+
+        <label for="cliente">Nome do cliente:</label>
+        <input type="text" id="cliente">
+
+        <label for="endereco">Endereço de entrega:</label>
+        <input type="text" id="endereco">
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep">
+
+        <label for="pagamento">Forma de pagamento:</label>
+        <select id="pagamento">
+            <option value="">-- selecione --</option>
+            <option value="Cartão">Cartão</option>
+            <option value="PIX">PIX</option>
+            <option value="Dinheiro">Dinheiro</option>
+        </select>
+
+        <label for="observacoes">Observações:</label>
+        <textarea id="observacoes"></textarea>
+
+        <button type="button" id="enviar">
+            Enviar Pedido
+        </button>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("enviar");
+
+        botao.addEventListener("click", function() {
+
+            let produto = document.getElementById("produto");
+            let quantidade = document.getElementById("quantidade");
+            let cliente = document.getElementById("cliente");
+            let endereco = document.getElementById("endereco");
+            let cep = document.getElementById("cep");
+            let pagamento = document.getElementById("pagamento");
+            let observacoes = document.getElementById("observacoes");
+
+            if (produto.value.trim() === "") {
+                alert("Preencha o nome do produto.");
+                produto.value = "";
+                produto.focus();
+                return;
+            }
+
+            if (quantidade.value.trim() === "") {
+                alert("Preencha a quantidade.");
+                quantidade.value = "";
+                quantidade.focus();
+                return;
+            }
+
+            if (cliente.value.trim() === "") {
+                alert("Preencha o nome do cliente.");
+                cliente.value = "";
+                cliente.focus();
+                return;
+            }
+
+            if (endereco.value.trim() === "") {
+                alert("Preencha o endereço de entrega.");
+                endereco.value = "";
+                endereco.focus();
+                return;
+            }
+
+            if (cep.value.trim() === "") {
+                alert("Preencha o CEP.");
+                cep.value = "";
+                cep.focus();
+                return;
+            }
+
+            if (pagamento.value === "") {
+                alert("Selecione a forma de pagamento.");
+                pagamento.value = "";
+                pagamento.focus();
+                return;
+            }
+
+            if (observacoes.value.trim() === "") {
+                alert("Preencha as observações.");
+                observacoes.value = "";
+                observacoes.focus();
+                return;
+            }
+
+            alert(
+                "Pedido validado com sucesso!\n\n" +
+                "Nome do produto: " + produto.value +
+                "\nQuantidade: " + quantidade.value +
+                "\nNome do cliente: " + cliente.value +
+                "\nEndereço de entrega: " + endereco.value +
+                "\nCEP: " + cep.value +
+                "\nForma de pagamento: " + pagamento.value +
+                "\nObservações: " + observacoes.value
+            );
+
+        });
+    </script>
+
+</body>
+</html>

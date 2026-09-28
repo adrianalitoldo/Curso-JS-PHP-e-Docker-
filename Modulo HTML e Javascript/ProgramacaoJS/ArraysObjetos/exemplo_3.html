@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo 2 - Condicionais com os Operadores</title>
+    <title>Exemplo 3 - Arrays e Objetos</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -17,94 +17,80 @@
     </header>
 
     <main class="main-content">
-        <h2>Exemplo 2 - Condicionais com os Operadores</h2>
-        <div class="form-columns">
+        <h2>Exemplo 3 - Arrays e Objetos</h2>
 
-            <div class="form-group">
-                <label for="nota1">Nota 1</label>
-                <input type="text" id="nota1" placeholder="Digite a nota 1 aqui...">
-            </div>
-
-            <div class="form-group">
-                <label for="nota2">Nota 2</label>
-                <input type="text" id="nota2" placeholder="Digite a nota 2 aqui...">
-            </div>
-
-            <div class="form-group">
-                <label for="nota3">Nota 3</label>
-                <input type="text" id="nota3" placeholder="Digite a nota 3 aqui...">
-            </div>
-
-            <div class="form-group">
-                <label for="nota4">Nota 4</label>
-                <input type="text" id="nota4" placeholder="Digite a nota 4 aqui...">
-            </div>
-
+        <div class="form-group">
+            <label for="nome_completo">Nome completo</label>
+            <input type="text" id="nome_completo" placeholder="Digite seu nome aqui...">
         </div>
 
+        <div class="form-group">
+            <label for="idade_usuario">Idade</label>
+            <input type="text" id="idade_usuario" placeholder="Digite sua idade aqui...">
+        </div>
 
-        <p id="msg"></p>
-        <button type="submit" id="btn_calcular" class="btn success">Calcular média</button>
+        <div class="form-group">
+            <label for="rua_usuario">Sua rua</label>
+            <input type="text" id="rua_usuario" placeholder="Digite o nome da sua rua aqui...">
+        </div>
+        <p id="msg_exibir"></p>
 
+        <button type="submit" id="btn_exibir" class="btn success">Exibir</button>
+        <button type="submit" id="btn_add" class="btn success">Adicionar</button>
 
+        <hr>
     </main>
 
     <Script>
-        const btnCalcular = document.getElementById("btn_calcular")
-        const msgMostrar = document.getElementById("msg")
+
+        const btnExibir = document.getElementById("btn_exibir")
+        const btnAdd = document.getElementById("btn_add")
+        const nomeInput = document.getElementById("nome_completo")
+        const idadeInput = document.getElementById("idade_usuario")
+        const ruaInput = document.getElementById("rua_usuario")
+
+        const msg = document.getElementById("msg_exibir")
+        let pessoa = {}
+        let listaPessoas = []
 
 
-        btnCalcular.addEventListener("click", () => {
-            let nota1 = document.getElementById("nota1").value.trim()
-            let nota2 = document.getElementById("nota2").value.trim()
-            let nota3 = document.getElementById("nota3").value.trim()
-            let nota4 = document.getElementById("nota4").value.trim()
 
-            if (nota1 == "" || nota2 == "" || nota3 == "" || nota4 == "") {
-                alert("Preencher todos os campos")
+        btnAdd.addEventListener("click", () => {
+            pessoa = {
+                nome: nomeInput.value,
+                idade: idadeInput.value,
+                rua: ruaInput.value
             }
-            else if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
-                alert("Preencher os campos somente com números")
-            }
-            else {
-                nota1 = Number(nota1)
-                nota2 = Number(nota2)
-                nota3 = Number(nota3)
-                nota4 = Number(nota4)
 
-                if (nota1 < 0 || nota1 > 100) {
-                    alert(" A nota 1 é inválida. Digite uma nota de 0 até 100")
-                }
-                else if (nota2 < 0 || nota2 > 100) {
-                    alert(" A nota 2 é inválida. Digite uma nota de 0 até 100")
-                }
-                else if (nota3 < 0 || nota3 > 100) {
-                    alert(" A nota 3 é inválida. Digite uma nota de 0 até 100")
-                }
-                else if (nota4 < 0 || nota4 > 100) {
-                    alert(" A nota 4 é inválida. Digite uma nota de 0 até 100")
-                }
-                else {
-                    const media = (nota1 + nota2 + nota3 + nota4) / 4
+            nomeInput.value = "";
+            idadeInput.value = "";
+            ruaInput.value = "";
 
-                    if (media >= 0 && media < 40) {
-                        msgMostrar.innerHTML = `${media} - Reprovado!`
-                        msgMostrar.style.color = "red"
+            listaPessoas.push(pessoa)
 
-                    }
-                    else if (media >= 40 && media < 60) {
-                        msgMostrar.innerHTML = `${media} - Exame!`
-                        msgMostrar.style.color = "orange"
 
-                    }
-                    else if (media >= 60) {
-                        msgMostrar.innerHTML = `${media} - Aprovado!`
-                        msgMostrar.style.color = "green"
-
-                    }
-                }
-            }
+            console.log(pessoa)
         })
+
+
+
+        btnExibir.addEventListener("click", () => {
+            let resultado = ""
+            
+            listaPessoas.forEach((item) => {
+                resultado = resultado + `Nome: ${item.nome}, sua idade é: ${item.idade} 
+                anos, e sua rua é: ${item.rua}<br>`
+            })
+                
+
+
+            msg.innerHTML = resultado
+
+
+        })
+
+
+
 
     </Script>
 

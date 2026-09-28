@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+
+<body>
+
+    <h1>Lista de Compras</h1>
+
+    <input type="text" id="item" placeholder="Digite um item">
+
+    <button id="btnAdicionar">Adicionar</button>
+
+    <button id="btnMostrar">Mostrar Lista</button>
+
+    <p id="status"></p>
+
+    <ul id="lista"></ul>
+
+
+    <script>
+
+        let listaDeCompras = [];
+
+
+        const item = document.getElementById("item");
+        const btnAdicionar = document.getElementById("btnAdicionar");
+        const btnMostrar = document.getElementById("btnMostrar");
+        const status = document.getElementById("status");
+        const lista = document.getElementById("lista");
+
+
+        btnAdicionar.addEventListener("click", function() {
+
+            const nomeItem = item.value;
+
+            if (nomeItem === "") {
+
+                status.innerHTML = "Digite um item.";
+                item.focus();
+                return;
+
+            }
+
+            listaDeCompras.push(nomeItem);
+
+            item.value = "";
+
+            status.innerHTML = "Item adicionado com sucesso!";
+
+        });
+
+
+        btnMostrar.addEventListener("click", function() {
+
+            lista.innerHTML = "";
+
+            for (let i = 0; i < listaDeCompras.length; i++) {
+
+                lista.innerHTML += "<li>" + listaDeCompras[i] + "</li>";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

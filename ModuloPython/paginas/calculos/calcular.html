@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <label>Número1</label>
+    <input id="num1">
+    <label>Número2</label>
+    <input id="num2">
+    <select id="operador">
+        <option value="+">Soma</option>
+        <option value="-">Subtração</option>
+        <option value="x">Multiplicação</option>
+        <option value="/">Divisão</option>
+    </select>
+
+    <button onclick="calcular()" id="btn_calcular">Calcular</button>
+    <input disabled id="resultado">
+
+</body>
+</html>
+<script>
+    async function calcular(){
+        try{
+            const num1 = document.getElementById("num1").value.trim()
+            const num2 = document.getElementById("num2").value.trim()
+            const operador = document.getElementById("operador").value
+
+
+            if(num1 == "" || num2 == "" || operador == ""){
+                alert("Preencha todos os campos")
+            }
+            else{
+                const enviarDados = {
+                    "num1" : num1,
+                    "num2" : num2,
+                    "op" : operador
+                }
+
+                const dadosJson = JSON.stringify(enviarDados)
+                const response = await fetch("/calculadora_resposta", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: dadosJson
+                })
+
+                if(!response.ok) {
+                    alert("Ocorreu um erro ao chamar a API")
+                }
+                else{
+                    const dadosRetornados = await response.json()
+
+                    document.getElementById("resultado").value = dadosRetornados.resultado
+                }
+            }
+        }catch{
+            alert("Ocorreu um erro geral")
+    }
+}
+
+</script>

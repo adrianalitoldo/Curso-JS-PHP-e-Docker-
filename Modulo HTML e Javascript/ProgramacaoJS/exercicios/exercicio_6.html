@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparar Idades</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Comparar Idades</h1>
+
+    <div class="formulario">
+
+        <h2>Primeira pessoa</h2>
+
+        <label for="nome1">Nome:</label>
+        <input type="text" id="nome1">
+
+        <label for="idade1">Idade:</label>
+        <input type="text" id="idade1">
+
+        <h2>Segunda pessoa</h2>
+
+        <label for="nome2">Nome:</label>
+        <input type="text" id="nome2">
+
+        <label for="idade2">Idade:</label>
+        <input type="text" id="idade2">
+
+        <button type="button" id="comparar">
+            Comparar Idades
+        </button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("comparar");
+
+        botao.addEventListener("click", function() {
+
+            let nome1 = document.getElementById("nome1").value;
+            let idade1 = Number(document.getElementById("idade1").value);
+
+            let nome2 = document.getElementById("nome2").value;
+            let idade2 = Number(document.getElementById("idade2").value);
+
+            let resultado = document.getElementById("resultado");
+
+            if (idade1 > idade2) {
+                resultado.textContent = nome1 + " é a pessoa mais velha, com " + idade1 + " anos.";
+            } 
+            else if (idade2 > idade1) {
+                resultado.textContent = nome2 + " é a pessoa mais velha, com " + idade2 + " anos.";
+            } 
+            else {
+                resultado.textContent = "Ambas tem a mesma idade.";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

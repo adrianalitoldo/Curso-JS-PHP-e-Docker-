@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações da Cidade</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Informações da Cidade</h1>
+
+    <form>
+        <label>Nome da cidade:</label>
+        <input type="text" id="cidade">
+        <br><br>
+
+        <label>Nome do estado:</label>
+        <input type="text" id="estado">
+        <br><br>
+
+        <label>Quantidade de habitantes:</label>
+        <input type="number" id="habitantes">
+        <br><br>
+
+        <button type="button" onclick="mostrarCidade()">Mostrar Cidade</button>
+    </form>
+
+    <script>
+        function mostrarCidade() {
+            let cidade = document.getElementById("cidade").value;
+            let estado = document.getElementById("estado").value;
+            let habitantes = document.getElementById("habitantes").value;
+
+            alert(
+                "Cidade: " + cidade +
+                "\nEstado: " + estado +
+                "\nQuantidade de habitantes: " + habitantes
+            );
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de CEP</title>
+</head>
+
+<body>
+
+    <label>CEP:</label>
+    <input type="text" id="cep">
+
+    <button id="btnVerificar">Verificar CEP</button>
+
+    <p id="status"></p>
+
+    <script>
+
+        const cep = document.getElementById("cep");
+        const status = document.getElementById("status");
+        const botao = document.getElementById("btnVerificar");
+
+
+        async function processarCep() {
+
+            status.innerHTML = "Consultando CEP...";
+
+            await concluirCep();
+
+        }
+
+
+        async function concluirCep() {
+
+            setTimeout(() => {
+
+                status.innerHTML = "Consulta concluída!";
+
+            }, 1500);
+
+        }
+
+
+        async function iniciarVerificacao() {
+
+            status.innerHTML = "Enviando requisição...";
+
+            processarCep();
+
+            status.innerHTML = "Aguardando resposta...";
+
+        }
+
+
+        function fazerAcao() {
+
+            const valorCep = cep.value;
+
+            iniciarVerificacao();
+
+            status.innerHTML = "Usuário pode continuar usando a página...";
+
+        }
+
+
+        botao.addEventListener("click", fazerAcao);
+
+    </script>
+
+</body>
+</html>

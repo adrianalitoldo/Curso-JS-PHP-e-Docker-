@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do Produto</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Informações do Produto</h1>
+
+    <div class="formulario">
+
+        <h2>Digite os dados do produto</h2>
+
+        <form>
+
+            <label for="produto">Nome do produto:</label>
+            <input type="text" id="produto">
+
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" step="0.01">
+
+            <label for="estoque">Quantidade em estoque:</label>
+            <input type="number" id="estoque">
+
+            <button type="button" onclick="mostrarProduto()">
+                Mostrar Produto
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+        function mostrarProduto() {
+            let produto = document.getElementById("produto").value;
+            let preco = document.getElementById("preco").value;
+            let estoque = document.getElementById("estoque").value;
+
+            alert(
+                "Produto: " + produto +
+                "\nPreço: " + preco +
+                "\nQuantidade em estoque: " + estoque
+            );
+        }
+    </script>
+
+</body>
+</html>
+

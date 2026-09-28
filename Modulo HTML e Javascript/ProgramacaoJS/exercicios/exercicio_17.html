@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Alturas</title>
+</head>
+
+<body>
+
+    <h1>Filtro de Alturas</h1>
+
+    <label>Digite a altura:</label>
+    <input type="text" id="altura" placeholder="Ex: 1,71 ou 171">
+
+    <button id="btnAdicionar">Adicionar Altura</button>
+
+    <button id="btnFiltrar">Exibir Alturas Maiores que 1,70m</button>
+
+    <p id="resultado"></p>
+
+
+    <script>
+
+        let alturas = [];
+
+
+        const altura = document.getElementById("altura");
+        const btnAdicionar = document.getElementById("btnAdicionar");
+        const btnFiltrar = document.getElementById("btnFiltrar");
+        const resultado = document.getElementById("resultado");
+
+
+        btnAdicionar.addEventListener("click", function() {
+
+            let valorAltura = altura.value.replace(",", ".");
+
+            valorAltura = Number(valorAltura);
+
+
+            if (valorAltura === 0 || isNaN(valorAltura)) {
+
+                resultado.innerHTML = "Digite uma altura válida.";
+                altura.focus();
+                return;
+
+            }
+
+
+            // Se digitar 1,71 ou 1.71, transforma em 171 cm
+            if (valorAltura < 3) {
+
+                valorAltura = valorAltura * 100;
+
+            }
+
+
+            alturas.push(valorAltura);
+
+            altura.value = "";
+
+            resultado.innerHTML = "Altura adicionada com sucesso!";
+
+        });
+
+
+        btnFiltrar.addEventListener("click", function() {
+
+            const alturasFiltradas = alturas.filter(function(valor) {
+
+                return valor > 170;
+
+            });
+
+
+            if (alturasFiltradas.length === 0) {
+
+                resultado.innerHTML = "Nenhuma altura maior que 1,70m.";
+
+                return;
+
+            }
+
+
+            resultado.innerHTML =
+                "Alturas maiores que 1,70m: " +
+                alturasFiltradas.join(" cm, ") +
+                " cm";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

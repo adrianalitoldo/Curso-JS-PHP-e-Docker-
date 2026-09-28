@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo 2 - Operadores Lógiocos</title>
+    <title>Exemplo 2 - Objetos</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -17,59 +17,69 @@
     </header>
 
     <main class="main-content">
-        <h2>Exemplo 2 - Operadores Lógiocos</h2>
-        <div class="form-columns">
+        <h2>Exemplo 2 - Objetos</h2>
 
-            <div class="form-group">
-                <label for="numero_inicial">Número inicial</label>
-                <input type="text" id="numero_inicial" placeholder="Digite o número inicial aqui...">
-            </div>
-
-            <div class="form-group">
-                <label for="numero_meio">Número do meio</label>
-                <input type="text" id="numero_meio" placeholder="Digite o número do meio aqui...">
-            </div>
-
-            <div class="form-group">
-                <label for="numero_final">Número final</label>
-                <input type="text" id="numero_final" placeholder="Digite o número final aqui...">
-            </div>
-
+        <div class="form-group">
+            <label for="nome_completo">Nome completo</label>
+            <input type="text" id="nome_completo" placeholder="Digite seu nome aqui...">
         </div>
 
+        <div class="form-group">
+            <label for="idade_usuario">Idade</label>
+            <input type="text" id="idade_usuario" placeholder="Digite sua idade aqui...">
+        </div>
 
-        <p id="msg"></p>
-        <button type="submit" id="btn_verificar_intervalo" class="btn success">Verificar intervalo</button>
+        <div class="form-group">
+            <label for="rua_usuario">Sua rua</label>
+            <input type="text" id="rua_usuario" placeholder="Digite o nome da sua rua aqui...">
+        </div>
+        <p id="msg_exibir"></p>
 
+        <button type="submit" id="btn_exibir" class="btn success">Exibir</button>
+        <button type="submit" id="btn_add" class="btn success">Adicionar</button>
 
+        <hr>
     </main>
 
     <Script>
-        const btnVerificarIntervalo = document.getElementById("btn_verificar_intervalo")
-        const msgMostrar = document.getElementById("msg")
+
+        const btnExibir = document.getElementById("btn_exibir")
+        const btnAdd = document.getElementById("btn_add")
+        const nomeInput = document.getElementById("nome_completo")
+        const idadeInput = document.getElementById("idade_usuario")
+        const ruaInput = document.getElementById("rua_usuario")
+
+        const msg = document.getElementById("msg_exibir")
+        let pessoa = {}
 
 
-        btnVerificarIntervalo.addEventListener("click", () => {
-            const inicial = document.getElementById("numero_inicial").value.trim()
-            const meio = document.getElementById("numero_meio").value.trim()
-            const final = document.getElementById("numero_final").value.trim()
 
-            if (inicial == "" || meio == "" || final == "") {
-                alert("Preencher todos os campos")
+        btnAdd.addEventListener("click", () => {
+            pessoa = {
+                nome: nomeInput.value,
+                idade: idadeInput.value,
+                rua: ruaInput.value
             }
-            else if( isNaN (inicial) || isNaN (meio) || isNaN (final)){
-                alert("Preencher os campos somente com números")
-            }
-            else{
-                if(Number(meio) >= Number(inicial) && meio <= Number(final)){
-                    msgMostrar.innerHTML = `O número ${meio} está entre o valor ${inicial} e ${final}`
-                }
-                else{
-                    msgMostrar.innerHTML = `O número ${meio} não está entre o valor ${inicial} e ${final}`
-                }
 
-            }
+            nomeInput.value = "";
+            idadeInput.value = "";
+            ruaInput.value = "";
+
+
+            console.log(pessoa)
         })
+
+
+
+        btnExibir.addEventListener("click", () => {
+            msg.innerHTML = `Nome: ${pessoa.nome}, sua idade é: ${pessoa.idade} anos, 
+            e sua rua é: ${pessoa.rua}.`
+
+
+        })
+
+
+
 
     </Script>
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média Ponderada</title>
+</head>
+
+<body>
+
+    <h1>Calcular Média Ponderada</h1>
+
+    <label>Nota 1:</label>
+    <input type="number" id="nota1" step="0.01">
+    <br><br>
+
+    <label>Peso 1:</label>
+    <input type="number" id="peso1" step="0.01">
+    <br><br>
+
+    <label>Nota 2:</label>
+    <input type="number" id="nota2" step="0.01">
+    <br><br>
+
+    <label>Peso 2:</label>
+    <input type="number" id="peso2" step="0.01">
+    <br><br>
+
+    <label>Nota 3:</label>
+    <input type="number" id="nota3" step="0.01">
+    <br><br>
+
+    <label>Peso 3:</label>
+    <input type="number" id="peso3" step="0.01">
+    <br><br>
+
+    <button onclick="calcularMedia()">Calcular</button>
+
+    <script>
+        async function calcularMedia() {
+
+            const nota1 = document.getElementById("nota1").value;
+            const peso1 = document.getElementById("peso1").value;
+
+            const nota2 = document.getElementById("nota2").value;
+            const peso2 = document.getElementById("peso2").value;
+
+            const nota3 = document.getElementById("nota3").value;
+            const peso3 = document.getElementById("peso3").value;
+
+            const resposta = await fetch(
+                "http://localhost:5000/calculo_media_ponderada",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nota1: nota1,
+                        peso1: peso1,
+                        nota2: nota2,
+                        peso2: peso2,
+                        nota3: nota3,
+                        peso3: peso3
+                    })
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+                alert("Média ponderada: " + dados.media_ponderada);
+            } else {
+                alert("Erro: " + dados.mensagem);
+            }
+        }
+    </script>
+
+</body>
+</html>

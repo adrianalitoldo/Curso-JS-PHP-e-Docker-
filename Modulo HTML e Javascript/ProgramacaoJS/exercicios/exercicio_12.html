@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Campos</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Validação de Campos</h1>
+
+    <div class="formulario">
+
+        <h2>Preencha os campos</h2>
+
+        <label for="assunto">Assunto:</label>
+        <input type="text" id="assunto">
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem"></textarea>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone">
+
+        <button type="button" id="validar">
+            Validar Campos
+        </button>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("validar");
+
+        botao.addEventListener("click", function() {
+
+            let assunto = document.getElementById("assunto");
+            let mensagem = document.getElementById("mensagem");
+            let telefone = document.getElementById("telefone");
+
+            if (assunto.value.trim() === "") {
+                alert("Preencha o campo Assunto.");
+                assunto.value = "";
+                assunto.focus();
+                return;
+            }
+
+            if (mensagem.value.trim() === "") {
+                alert("Preencha o campo Mensagem.");
+                mensagem.value = "";
+                mensagem.focus();
+                return;
+            }
+
+            if (telefone.value.trim() === "") {
+                alert("Preencha o campo Telefone.");
+                telefone.value = "";
+                telefone.focus();
+                return;
+            }
+
+            alert("Os campos foram validados corretamente.");
+
+        });
+    </script>
+
+</body>
+</html>
+

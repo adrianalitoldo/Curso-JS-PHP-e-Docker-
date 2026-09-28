@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Download</title>
+</head>
+
+<body>
+
+    <button id="btnDownload">Iniciar Download</button>
+
+    <p id="msg"></p>
+
+    <script>
+
+        const msg = document.getElementById("msg");
+        const botao = document.getElementById("btnDownload");
+
+        async function processarDownload() {
+
+            msg.innerHTML = "Iniciando download...";
+
+            await processarDowload();
+
+        }
+
+        async function processarDowload() {
+
+            setTimeout(() => {
+                msg.innerHTML = "Download concluído!";
+            }, 2000);
+
+        }
+
+        async function iniciarDownload() {
+
+            msg.innerHTML = "Enviando solicitação...";
+
+            processarDownload();
+
+            msg.innerHTML = "Aguardando finalização...";
+
+        }
+
+        function fazerAcao() {
+
+            iniciarDownload();
+
+            msg.innerHTML = "Fazendo outra coisa...";
+
+        }
+
+        botao.addEventListener("click", fazerAcao);
+
+    </script>
+
+</body>
+</html>

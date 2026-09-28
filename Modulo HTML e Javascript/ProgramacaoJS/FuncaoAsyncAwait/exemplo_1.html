@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1 - Execução da Função Async/Await</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header-main">
+        <a href="index.html">
+            <h1>Lógica de programação com Javascript</h1>
+        </a>
+    </header>
+
+    <main class="main-content">
+        <h2>Exemplo 1 - Execução da Função Async/Await</h2>
+
+        <button type="submit" id="btn_iniciar" onclick="fazerPedido()" class="btn success">Iniciar processo</button>
+
+        <p id="msg"></p>
+    </main>
+
+    <Script>
+
+        const msg = document.getElementById("msg")
+
+        async function processarPedido(){
+            msg.innerHTML += "Iniciando os preparos<br>"
+
+            //simula o processamento demorado
+            
+            await setTimeout(() => {
+                    msg.innerHTML +=  "Comida finalizada, pode entregar<br>"
+                }, 2000)
+
+               //outro jeito de simular um processamento mais pesado
+               // for(let i = 0; i < 1000000000; i++){
+                    //simula um processamento pesado
+              //  }
+        }
+
+
+        async function iniciarPedido(){
+            msg.innerHTML += "Enviando o pedido para cozinha...<br>"
+            processarPedido()
+            msg.innerHTML += " Pedido pronto, chama o cliente<br>"
+
+        }
+
+        async function fazerPedido(){
+            msg.innerHTML = "Fazendo o pedido<br>"
+            iniciarPedido()
+            msg.innerHTML += " Cliente pode fazer qualquer coisa<br>"
+
+        }
+
+    </Script>
+
+</body>
+
+</html>

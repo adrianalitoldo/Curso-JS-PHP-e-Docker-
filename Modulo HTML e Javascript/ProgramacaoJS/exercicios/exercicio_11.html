@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Senha</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Validação de Senha</h1>
+
+    <div class="formulario">
+
+        <h2>Sistema de Login</h2>
+
+        <p>Você possui no máximo 3 tentativas.</p>
+
+    </div>
+
+    <script>
+        let senhaCorreta = "senha123";
+        let tentativas = 0;
+        let senha = prompt("Digite sua senha:");
+
+        while (senha != senhaCorreta && tentativas < 2) {
+
+            alert("Senha incorreta.");
+
+            tentativas++;
+
+            senha = prompt("Digite sua senha novamente:");
+        }
+
+        if (senha == senhaCorreta) {
+            alert("Login bem-sucedido!");
+        } else {
+            alert("Número máximo de tentativas atingido.");
+        }
+    </script>
+
+</body>
+</html>

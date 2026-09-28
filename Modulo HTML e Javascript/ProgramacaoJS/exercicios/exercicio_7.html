@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Controle de Estoque</h1>
+
+    <div class="formulario">
+
+        <h2>Retirar Produto do Estoque</h2>
+
+        <label for="produto">Selecione o produto:</label>
+        <select id="produto">
+            <option value="teclado">Teclado</option>
+            <option value="mouse">Mouse</option>
+        </select>
+
+        <label for="quantidade">Quantidade de retirada:</label>
+        <input type="text" id="quantidade">
+
+        <button type="button" id="retirar">
+            Retirar do Estoque
+        </button>
+
+    </div>
+
+    <script>
+        let qtdEstoqueTeclado = 10;
+        let qtdEstoqueMouse = 15;
+
+        let botao = document.getElementById("retirar");
+
+        botao.addEventListener("click", function() {
+
+            let produto = document.getElementById("produto").value;
+            let quantidade = Number(document.getElementById("quantidade").value);
+
+            if (produto === "teclado") {
+
+                if (quantidade > qtdEstoqueTeclado) {
+                    alert("Não há estoque suficiente.");
+                } else {
+                    qtdEstoqueTeclado = qtdEstoqueTeclado - quantidade;
+
+                    alert(
+                        "Retirada realizada com sucesso. Estoque atual: " +
+                        qtdEstoqueTeclado
+                    );
+                }
+
+            } else if (produto === "mouse") {
+
+                if (quantidade > qtdEstoqueMouse) {
+                    alert("Não há estoque suficiente.");
+                } else {
+                    qtdEstoqueMouse = qtdEstoqueMouse - quantidade;
+
+                    alert(
+                        "Retirada realizada com sucesso. Estoque atual: " +
+                        qtdEstoqueMouse
+                    );
+                }
+            }
+
+        });
+    </script>
+
+</body>
+</html>

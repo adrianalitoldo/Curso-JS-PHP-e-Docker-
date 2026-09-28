@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dividir Conta</title>
+</head>
+
+<body>
+
+    <h1>Dividir Conta entre Amigos</h1>
+
+    <label>Valor total da conta:</label>
+    <input type="number" id="valor_total" step="0.01">
+
+    <br><br>
+
+    <label>Número de pessoas:</label>
+    <input type="number" id="numero_de_pessoas">
+
+    <br><br>
+
+    <button onclick="dividirConta()">Dividir Conta</button>
+
+    <script>
+        async function dividirConta() {
+
+            const valor_total =
+                document.getElementById("valor_total").value;
+
+            const numero_de_pessoas =
+                document.getElementById("numero_de_pessoas").value;
+
+            const resposta = await fetch(
+                "http://localhost:5000/dividir_conta",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        valor_total: valor_total,
+                        numero_de_pessoas: numero_de_pessoas
+                    })
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+                alert(
+                    "Valor por pessoa: R$ " +
+                    dados.valor_por_pessoa.toFixed(2)
+                );
+            } else {
+                alert("Erro: " + dados.mensagem);
+            }
+        }
+    </script>
+
+</body>
+</html>

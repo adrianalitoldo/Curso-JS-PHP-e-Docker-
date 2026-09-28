@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Progressiva</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <h1>Contagem Progressiva</h1>
+
+    <div class="formulario">
+
+        <h2>Iniciar Contagem</h2>
+
+        <label for="numero">Digite um número:</label>
+        <input type="number" id="numero">
+
+        <button type="button" id="iniciar">
+            Iniciar Contagem
+        </button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("iniciar");
+
+        botao.addEventListener("click", function() {
+
+            let numero = Number(document.getElementById("numero").value);
+            let resultado = document.getElementById("resultado");
+
+            resultado.innerHTML = "";
+
+            for (let i = 0; i <= numero; i++) {
+                resultado.innerHTML += i + "<br>";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

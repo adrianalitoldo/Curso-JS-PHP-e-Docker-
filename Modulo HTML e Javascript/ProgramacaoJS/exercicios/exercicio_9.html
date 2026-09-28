@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Multiplicação</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <h1>Tabela de Multiplicação</h1>
+
+    <div class="formulario">
+
+        <h2>Gerar Tabuada</h2>
+
+        <label for="numero">Digite um número:</label>
+        <input type="text" id="numero">
+
+        <button type="button" id="gerar">
+            Gerar Tabuada
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script>
+        let botao = document.getElementById("gerar");
+
+        botao.addEventListener("click", function() {
+
+            let numero = Number(document.getElementById("numero").value);
+            let resultado = document.getElementById("resultado");
+
+            resultado.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+
+                let multiplicacao = numero * i;
+
+                resultado.innerHTML +=
+                    numero + " x " + i + " = " + multiplicacao + "<br>";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

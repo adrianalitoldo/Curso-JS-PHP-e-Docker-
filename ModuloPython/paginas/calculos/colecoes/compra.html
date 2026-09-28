@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Nome do Cliente:</label>
+    <input id="nome">
+    <br>
+
+    <label>Nome do Produto:</label>
+    <input id="nome_produto">
+    <br>
+
+    <label>Quantidade:</label>
+    <input id="qtd">
+    <br>
+
+    <button id="btn_qtd" onclick="adicionarCarrinho()">Adicionar</button>
+    <button id="btn_finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+
+</body>
+<script>
+    let carrinho = []
+
+    async function finalizarCompra() {
+        try{
+            const nomeCliente = document.getElementById("nome").value.trim()
+            
+            if (nomeCliente == "" || carrinho.length == 0)
+                alert("É necessário preencher o nome e o carrinho que está lgo dentro")
+
+            else{
+                const enviarDados = {
+                    "nome" : nomeCliente,
+                    "carrinho" : carrinho
+                }
+                const dadosJson = JSON.stringify(enviarDados)
+
+                const response = await fetch("/processar_pedido", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: dadosJson
+                })
+                if(!response.ok) {
+                    alert("Ocorreu um erro ao chamar a API")
+                }
+                else{
+                    const dadosRetornados = await response.json()
+
+                    console.log(dadosRetornados)
+                    alert(`cliente: ${dadosRetornados.cliente} \nTotal: ${dadosRetornados.valor_total}`)
+
+                }
+
+            }
+        }catch{
+            alert("Ocorreu um erro geral")
+        }
+    }
+
+    function limparCamposProduto(){
+        document.getElementById("nome_produto").value = ""
+        document.getElementById("qtd").value = ""
+        
+    }
+
+    function adicionarCarrinho(){
+        const nomeProduto = document.getElementById("nome_produto").value.trim()
+        const qtd = document.getElementById("qtd").value.trim()
+
+        if (nomeProduto == "" || qtd == ""){
+            alert("Preencher os campos Nome e Quantidade do produto")
+        }
+        else{
+            const produto = {
+                "produto" : nomeProduto,
+                "quantidade" : parseInt(qtd)
+            
+            } 
+            carrinho.push(produto)
+            limparCamposProduto()
+    }
+}
+        
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juros Simples</title>
+</head>
+
+<body>
+
+    <h1>Calcular Juros Simples</h1>
+
+    <label>Capital:</label>
+    <input type="number" id="capital" step="0.01">
+
+    <br><br>
+
+    <label>Taxa:</label>
+    <input type="number" id="taxa" step="0.01">
+
+    <br><br>
+
+    <label>Tempo:</label>
+    <input type="number" id="tempo" step="0.01">
+
+    <br><br>
+
+    <button onclick="calcularJuros()">Calcular</button>
+
+    <script>
+        async function calcularJuros() {
+
+            const capital = document.getElementById("capital").value;
+            const taxa = document.getElementById("taxa").value;
+            const tempo = document.getElementById("tempo").value;
+
+            const resposta = await fetch(
+                "http://localhost:5000/calcular_juros_simples",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        capital: capital,
+                        taxa: taxa,
+                        tempo: tempo
+                    })
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (resposta.ok) {
+                alert("Juros simples: " + dados.juros);
+            } else {
+                alert("Erro: " + dados.mensagem);
+            }
+        }
+    </script>
+
+</body>
+</html>
